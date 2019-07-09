@@ -71,6 +71,72 @@ This operator is introduced in PHP7. It is used to replace the ternary operation
 ?>
 ```
 
-###
+### Spaceship Operator (<==>)?
+
+PHP7 introduces new kind of operator, which can be used to comapre expressions. This operator will returns -1, 0 or 1 if the first expression is lessthan, equal to, or greater than the second expression.
+```
+// Integers
+print (1 <=> 1); // 0 
+print (1 <=> 2); // -1 
+print (2 <=> 1); // 1
+```
+### difference between call by value and call by reference?
+
+__call by value__ : call by value means passing the variable directly to a function. The called function uses the value in local variable.
+If any changes made inside the functions are not reflected in actual function of parameters of caller.
+
+```
+<?php
+function example($x){
+  
+  $x = $x + 10;
+  echo $x;
+}
+
+$x= 20;
+example($x); //30
+echo $x; //20
+```
+
+__call by reference__ : While calling function, instead of passing the values of variables, we pass the address of varaibles. so any changes made inside the function that are actually reflected in actual parameters of caller.
+
+Ex:
+```
+<?php
+function example(&$x){
+  
+  $x = $x + 10;
+  echo $x;
+}
+
+$x= 20;
+example($x); //30
+echo $x;  //30
+```
+### How can we check if key exists or not in an array?
+
+we can use ```array_key_exists()``` or ```isset()``` or ```!empty()```
+
+Ex:
+```
+$array =[
+'id' => 1,
+'name'=> 'raju',
+];
+array_key_exists('name', $array); // true
+isset($array['name']);  //true
+!empty($array['name']); //true
+```
+### How to validate array type?
+
+use ```is_array()``` returns true if a variable is an array.
+
+we can also use the ```gettype()``` function.
+EX:
+```$integer = 1337;
+$array = [1337, 42];
+gettype($integer) === 'array'; // false 
+gettype($array) === 'array'; // true
+```
 
 
