@@ -138,5 +138,81 @@ $array = [1337, 42];
 gettype($integer) === 'array'; // false 
 gettype($array) === 'array'; // true
 ```
+### How to check if a value exists in an array?
+
+The function ```in_array()``` returns true if an item exists in an array.
+
+```
+$fruits = ['banana', 'apple'];
+$foo = in_array('banana', $fruits); //true
+```
+we can also use the function ```array_search()``` to get the key of a specific item in an array.
+```
+$array = ['sachin','gowtham','yuvi'];
+$result = array_search('gowtham',$array);
+echo $result; //1
+```
+In PHP5.5 and later we can you use ```array_column``` in conjuction with ```array_search()```
+
+__checking if value exists in an associative array:___
+```
+$array =[
+    [ 'name' => 'sachin',
+     'score' => '102',
+    ],
+    [ 'name' => 'gowtham',
+     'score' => '125',
+    ],
+    [ 'name' => 'yuvi',
+     'score' => '98',
+    ],
+ ];
+ $key = array_search(125, array_column($array, 'score')); //1
+````
+### Destructring array using list()
+
+```list()``` assign variables as if they were an array.
+
+```
+$array = ['sachin', '103', 'cricketer'];
+list($name, $score, $desg) = $array;
+```
+### array_reduce in php
+
+```array_reduce``` reduces array into single value, The ```array_reduce``` will go through every item with the result from last iteration and produce new value to the next iteration.
+
+Ex:
+```
+$result = array_reduce([1,2,3,4,5], function($carry, $item){
+return $carry + $item;
+});
+echo $result; //15
+```
+__find the largest number in an array using array_reduce?__
+```$result = array_reduce([1,2,3,4,5], function($carry, $item){
+return $item > $carry ? $item : $carry;
+});
+echo $result;
+```
+### how can we exchange values with keys?
+
+```array_flip()``` function will exchange the all keys with its elements.
+```
+$colors = array(
+    'one' => 'red',
+    'two' => 'blue',
+    'three' => 'yellow',
+);
+array_flip($colors); //will output
+array(
+    'red' => 'one',
+    'blue' => 'two',
+    'yellow' => 'three'
+)
+```
+
+
+
+
 
 
